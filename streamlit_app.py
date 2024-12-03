@@ -34,16 +34,8 @@ with header_container:
     )
 
 with table_container:
-    st.markdown(
-        """
-        <div style='background-color: white; padding: 10px; margin-top: 20px;'>
-            <h3 style='text-align: center;'>Schichtübersicht</h3>
-        </div>
-        """,
-        unsafe_allow_html=True
-    )
     # Display Table with Data Entries
-    st.dataframe(df)
+    st.dataframe(df, use_container_width=True)
 
     # Save the data to a CSV file
     if st.button("Daten speichern"):
