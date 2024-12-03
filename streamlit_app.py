@@ -35,10 +35,12 @@ with header_container:
     )
 
 with button_container:
-    col1, col2 = st.columns([8, 1])
+    col1, col_mid, col2 = st.columns([3, 4, 1])
     with col1:
         if st.button("Eingabe der Schicht"):
             st.info("Eingabeformular ist oben verfügbar.")
+    with col_mid:
+        st.markdown("<h3 style='text-align: center;'>Schichtübersicht</h3>", unsafe_allow_html=True)
     with col2:
         if st.button("Letzten Eintrag löschen"):
             if not df.empty:
