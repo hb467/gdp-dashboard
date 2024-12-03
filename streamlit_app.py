@@ -36,11 +36,9 @@ with header_container:
 
 with button_container:
     
-    col1, col_mid, col2 = st.columns([3, 4, 3])
+    col1, col_mid, col2 = st.columns([1, 6, 1])
     with col1:
-        if st.button("Eingabe der Schicht"):
-            st.info("Eingabeformular ist oben verfügbar.")
-    with col_mid:
+            with col_mid:
         st.markdown("<h5 style='text-align: center;'>Schichtübersicht</h5>", unsafe_allow_html=True)
     with col2:
         if st.button("Letzten Eintrag löschen"):
@@ -53,3 +51,4 @@ with button_container:
 with table_container:
     # Display Table with Data Entries
     st.dataframe(df, use_container_width=True)
+
