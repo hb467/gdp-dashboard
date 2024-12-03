@@ -35,19 +35,16 @@ with header_container:
     )
 
 with button_container:
-    st.markdown("<div style='margin-top: 20px; background-color: skyblue; padding: 10px;'>", unsafe_allow_html=True)
     col1, col_mid, col2 = st.columns([1, 6, 1])
     col1, col_mid, col2 = st.columns([1, 6, 1])
     with col1:
-        st.markdown("<div style='background-color: skyblue; padding: 10px;'>", unsafe_allow_html=True)
-        if st.button("Eingabe der Schicht"):
+                if st.button("Eingabe der Schicht"):
             st.info("Eingabeformular ist oben verfügbar.")
     with col_mid:
         st.markdown("<h5 style='text-align: center; margin: 0;'>Schichtübersicht</h5>", unsafe_allow_html=True)
     with col2:
         if st.button("Letzten Eintrag löschen"):
-            st.markdown("</div>", unsafe_allow_html=True)
-            if not df.empty:
+                        if not df.empty:
                 df = df.iloc[:-1]
                 st.warning("Der letzte Eintrag wurde gelöscht.")
             else:
