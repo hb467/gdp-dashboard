@@ -35,7 +35,7 @@ with header_container:
     )
 
 with button_container:
-    st.markdown("<div style='margin-top: 20px; background-color: skyblue; padding: 20px;'>", unsafe_allow_html=True)
+    st.markdown("<div style='margin-top: 20px; background-color: skyblue; padding: 20px; display: flex; align-items: center;'>", unsafe_allow_html=True)
     col1, col_mid, col2 = st.columns([1, 6, 1])
     with col1:
         if st.button("Eingabe der Schicht"):
@@ -50,8 +50,9 @@ with button_container:
             else:
                 st.warning("Es gibt keine Einträge zum Löschen.")
 
-st.markdown("</div>", unsafe_allow_html=True)
+
 
 with table_container:
     # Display Table with Data Entries
     st.dataframe(df, use_container_width=True)
+
