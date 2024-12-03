@@ -16,6 +16,9 @@ data = {
 
 df = pd.DataFrame(data)
 
+# Add empty rows to the DataFrame
+df = df.append([{}] * 10, ignore_index=True)
+
 # Set page configuration
 st.set_page_config(page_title="Produktionsdokumentation Dashboard", layout="wide")
 
