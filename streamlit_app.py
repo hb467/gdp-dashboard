@@ -35,7 +35,7 @@ with header_container:
     )
 
 with button_container:
-    col1, col2 = st.columns([7, 1])
+    col1, col2 = st.columns([8, 1])
     with col1:
         if st.button("Eingabe der Schicht"):
             st.info("Eingabeformular ist oben verfügbar.")
