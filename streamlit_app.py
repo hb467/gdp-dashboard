@@ -35,7 +35,8 @@ with header_container:
     )
 
 with button_container:
-    st.markdown("<div style='margin-top: 20px; background-color: skyblue; padding: 20px;'>", unsafe_allow_html=True)    col1, col_mid, col2 = st.columns([1, 6, 1])
+    st.markdown("<div style='margin-top: 20px; background-color: skyblue; padding: 20px;'>", unsafe_allow_html=True)
+    col1, col_mid, col2 = st.columns([1, 6, 1])
     with col1:
         if st.button("Eingabe der Schicht"):
             st.info("Eingabeformular ist oben verfügbar.")
