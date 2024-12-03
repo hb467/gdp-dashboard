@@ -36,8 +36,3 @@ with header_container:
 with table_container:
     # Display Table with Data Entries
     st.dataframe(df, use_container_width=True)
-
-    # Save the data to a CSV file
-    if st.button("Daten speichern"):
-        df.to_csv("produktionsdaten.csv", index=False)
-        st.success("Daten wurden erfolgreich gespeichert.")
