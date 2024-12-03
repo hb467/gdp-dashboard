@@ -16,14 +16,12 @@ data = {
 
 df = pd.DataFrame(data)
 
-# Add empty rows to the DataFrame
-
-
 # Set page configuration
 st.set_page_config(page_title="Produktionsdokumentation Dashboard", layout="wide")
 
-# Divide page into two parts: top and bottom
+# Divide page into three parts: top, buttons, and bottom
 header_container = st.container()
+button_container = st.container()
 table_container = st.container()
 
 with header_container:
@@ -35,6 +33,19 @@ with header_container:
         """,
         unsafe_allow_html=True
     )
+
+with button_container:
+    col1, col2 = st.columns(2)
+    with col1:
+        if st.button("Eingabe der Schicht"):
+            st.info("Eingabeformular ist oben verfügbar.")
+    with col2:
+        if st.button("Letzten Eintrag löschen"):
+            if not df.empty:
+                df = df.iloc[:-1]
+                st.warning("Der letzte Eintrag wurde gelöscht.")
+            else:
+                st.warning("Es gibt keine Einträge zum Löschen.")
 
 with table_container:
     # Display Table with Data Entries
