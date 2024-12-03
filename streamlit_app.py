@@ -37,7 +37,6 @@ with header_container:
 with button_container:
     st.markdown("<div style='margin-top: 20px;'></div>", unsafe_allow_html=True)
     col1, col_mid, col2 = st.columns([3, 3, 3])
-    
     with col1:
         if st.button("Eingabe der Schicht"):
             st.info("Eingabeformular ist oben verfügbar.")
@@ -54,3 +53,4 @@ with button_container:
 with table_container:
     # Display Table with Data Entries
     st.dataframe(df, use_container_width=True)
+
