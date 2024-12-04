@@ -1,6 +1,5 @@
 import streamlit as st
 import pandas as pd
-from datetime import datetime
 
 # Mock data for the dashboard
 data = {
@@ -19,25 +18,68 @@ df = pd.DataFrame(data)
 # Set page configuration
 st.set_page_config(page_title="Produktionsdokumentation Dashboard", layout="wide")
 
-# Divide page into three parts: top, buttons, and bottom
-header_container = st.container()
-button_container = st.container()
-table_container = st.container()
-
-with header_container:
-    st.markdown(
-        """
-        <div style='background-color: #2196F3; padding: 20px;'>
-            <h2 style='color: white; text-align: center;'>Produktionsdokumentation Dashboard</h2>
+# Header Container:
+st.markdown(
+    """
+    <div style='display: flex; margin: 0; padding: 0;'>
+        <div style="background-color: #1E3A8A; padding: 60px; flex: 1;"></div>
+        <div style="background-color: #2196F3; padding: 60px; flex: 1; position: relative;">
+            <div style="position: absolute; bottom: 10px; width: 100%; padding: 0 20px; box-sizing: border-box;">
+                <div style="display: flex; align-items: center; margin-bottom: 5px;">
+                    <span style="color: white; font-weight: bold; margin-right: 5px;">Datum:</span>
+                    <input type="date" style="width: 90px; padding: 3px; height: 28px; border: 1px solid #ccc; border-radius: 4px;">
+                </div>
+                <div style="display: flex; align-items: center;">
+                    <span style="color: white; font-weight: bold; margin-right: 10px;">Schicht:</span>
+                    <select style="width: 90px; padding: 3px; height: 28px; border: 1px solid #ccc; border-radius: 4px;">
+                        <option value="Früh">Früh</option>
+                        <option value="Spät">Spät</option>
+                        <option value="Nacht">Nacht</option>
+                    </select>
+                </div>
+            </div>
         </div>
-        """,
-        unsafe_allow_html=True
-    )
+        <div style="background-color: #2196F3; padding: 60px; flex: 1; position: relative;">
+            <div style="position: absolute; bottom: 10px; width: 100%; padding: 0 20px; box-sizing: border-box;">
+                <div style="display: flex; align-items: center; margin-bottom: 5px;">
+                    <span style="color: white; font-weight: bold; margin-right: 10px;">Beginn:</span>
+                    <select style="width: 90px; padding: 3px; height: 28px; border: 1px solid #ccc; border-radius: 4px;">
+                        """ + "\n".join([f"<option value='{h:02}:00'>{h:02}:00</option>" for h in range(24)]) + """
+                    </select>
+                </div>
+                <div style="display: flex; align-items: center;">
+                    <span style="color: white; font-weight: bold; margin-right: 5px;">Ende:</span>
+                    <select style="width: 90px; padding: 3px; height: 28px; border: 1px solid #ccc; border-radius: 4px;">
+                        """ + "\n".join([f"<option value='{h:02}:00'>{h:02}:00</option>" for h in range(24)]) + """
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div style="background-color: #2196F3; padding: 60px; flex: 1;"></div>
+        <div style="background-color: #2196F3; padding: 60px; flex: 1;"></div>
+        <div style="background-color: #2196F3; padding: 60px; flex: 1;"></div>
+        <div style="background-color: #2196F3; padding: 60px; flex: 1; position: relative;">
+            <div style="position: absolute; bottom: 10px; width: 100%; padding: 0 20px; box-sizing: border-box;">
+                <div style="display: flex; align-items: center;">
+                    <span style="color: white; font-weight: bold; margin-right: 10px;">Direktläufer:</span>
+                    <select style="width: 90px; padding: 3px; height: 28px; border: 1px solid #ccc; border-radius: 4px;">
+                        <option value="Ja">Ja</option>
+                        <option value="Nein">Nein</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+<div style="background-color: black; padding: 60px; flex: 1;"></div>
+    </div>
+    """,
+    unsafe_allow_html=True,
+)
 
-with button_container:
+# Button Container
+with st.container():
     col1, col_mid, col2 = st.columns([1, 6, 1])
     with col1:
-        if st.button("Eingabe der Schicht"):
+        if st.button("Eingabe der Deckschicht"):
             st.info("Eingabeformular ist oben verfügbar.")
     with col_mid:
         st.markdown("<h5 style='text-align: center;'>Schichtübersicht</h5>", unsafe_allow_html=True)
@@ -49,6 +91,6 @@ with button_container:
             else:
                 st.warning("Es gibt keine Einträge zum Löschen.")
 
-with table_container:
-    # Display Table with Data Entries
+# Table Container
+with st.container():
     st.dataframe(df, use_container_width=True)
